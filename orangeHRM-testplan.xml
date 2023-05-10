@@ -1,0 +1,10 @@
+<suite name="OrangeHRM life">
+    <test name="Demo">
+        <classes>
+            <class name="orangeHRM.NavigateToOrangeHRMTest"/>
+            <class name="orangeHRM.LoginAdminAccountTest"/>
+            <class name="orangeHRM.PrintAccountNameTest"/>
+            <class name="orangeHRM.NavigateToAdminPageTest"/>
+        </classes>
+    </test>
+</suite>
