@@ -18,7 +18,7 @@ import static common.Browser.visit;
 public class LoginAdminAccountTest_csvfile {
     @DataProvider
     public Object[][] getCredentialsObjectFromCsv() {
-    String fileName = "F:/Automation Class/Project//OrangeHRMTest/src/test/java/username&password.csv";
+    String fileName = "F:/Automation Class/Project/OrangeHRMTest/src/main/resources/username&password.csv";
         try {
         FileReader fileReader = new FileReader(fileName);
         CSVReader csvReader = new CSVReaderBuilder(fileReader)
