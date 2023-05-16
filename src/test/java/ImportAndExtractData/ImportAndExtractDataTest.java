@@ -40,7 +40,7 @@ public class ImportAndExtractDataTest {
         String[] csvCells;
         List<String> provinceNameCsv = new ArrayList<String>();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        CSVReader readcsv = new CSVReader(new FileReader("F:/Automation Class/Project/AK39/src/test/java/64ProvinceNameList.csv"));
+        CSVReader readcsv = new CSVReader(new FileReader("F:/Automation Class/Project//OrangeHRMTest/src/test/java/64ProvinceNameList.csv"));
 
         while ((csvCells = readcsv.readNext()) != null) {
             provinceNameCsv.add(csvCells[0]);
