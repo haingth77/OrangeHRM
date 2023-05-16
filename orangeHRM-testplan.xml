@@ -9,6 +9,18 @@
             <class name="orangeHRM.LoginAdminAccountTest"/>
         </classes>
     </test>
+    <test name="LoginAdminAccount_parameter">
+        <parameter name="username" value="Admin"/>
+        <parameter name="password" value="admin123"/>
+        <classes>
+            <class name="orangeHRM.LoginAdminAccount_parameter"/>
+        </classes>
+    </test>
+    <test name="LoginAdminAccountTest_csvfile">
+        <classes>
+            <class name="orangeHRM.LoginAdminAccountTest_csvfile"/>
+        </classes>
+    </test>
     <test name="PrintAccountName">
         <classes>
             <class name="orangeHRM.PrintAccountNameTest"/>
