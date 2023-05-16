@@ -1,12 +1,21 @@
 package common;
 
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Browser {
     private static WebDriver driver;
@@ -44,7 +53,23 @@ public class Browser {
 
     public static Boolean checkVisibility(By locator) {
         return driver.findElement(locator).isDisplayed();
-                //driver.findElement(By.xpath("//li[@class='oxd-main-menu-item-wrapper']/a[@href='/web/index.php/admin/viewAdminModule']")).isDisplayed();
+    }
+
+    public static String getTextOfWebElements(By locator) {
+        List<WebElement> elements = driver.findElements(locator);
+        return elements.stream().map(WebElement::getText).collect(Collectors.toList()).toString();
+    }
+
+    public static String getDataFromCsvFile(String fileLoction) throws IOException, CsvValidationException {
+        String[] csvCells;
+        List<String> provinceNameCsv = new ArrayList<String>();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        CSVReader readcsv = new CSVReader(new FileReader(fileLoction));
+
+        while ((csvCells = readcsv.readNext()) != null) {
+            provinceNameCsv.add(csvCells[0]);
+        }
+        return provinceNameCsv.toString().replace("\uFEFF","");
     }
 
     public static void closeBrowser() {
