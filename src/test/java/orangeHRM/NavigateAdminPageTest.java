@@ -1,46 +1,23 @@
 package orangeHRM;
 
-import common.Browser;
+import common.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import page.OrangeHRMPage;
 
 import static common.Browser.currentUrl;
-import static common.Browser.visit;
 
-public class NavigateAdminPageTest {
+public class NavigateAdminPageTest extends TestBase {
     OrangeHRMPage orangeHRMPage;
 
-    @DataProvider
-    Object[][] testData() {
-        return new Object[][]{
-                {"Admin", "admin123"}
-        };
-    }
-
-    @BeforeClass
-    void createPage() {
-        orangeHRMPage = new OrangeHRMPage();
-    }
-
-    @BeforeMethod
-    void openBrowser() {
-        Browser.openBrowser();
-        visit("https://opensource-demo.orangehrmlive.com/");
-    }
-
     @Test(dataProvider = "testData")
-    public void NavigateAdminPage(String username, String password) {
+    public void NavigateAdminPage(String url,String username, String password) {
+        orangeHRMPage = new OrangeHRMPage();
         orangeHRMPage.login(username, password);
         orangeHRMPage.gotoAdminPage();
         Assert.assertEquals(currentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers");
         Assert.assertTrue(orangeHRMPage.checkVisibilityOfAdminPageTitle());
         Assert.assertTrue(orangeHRMPage.checkVisibilityOfSystemUserFilter());
         Assert.assertTrue(orangeHRMPage.checkVisibilityOfSystemUserRecord());
-    }
-
-    @AfterMethod
-    void closeBrowser() {
-        Browser.closeBrowser();
     }
 }

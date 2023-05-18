@@ -63,7 +63,6 @@ public class Browser {
     public static String getDataFromCsvFile(String fileLoction) throws IOException, CsvValidationException {
         String[] csvCells;
         List<String> provinceNameCsv = new ArrayList<String>();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         CSVReader readcsv = new CSVReader(new FileReader(fileLoction));
 
         while ((csvCells = readcsv.readNext()) != null) {

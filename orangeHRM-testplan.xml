@@ -16,11 +16,6 @@
             <class name="orangeHRM.LoginAdminAccount_parameter"/>
         </classes>
     </test>
-    <test name="LoginAdminAccountTest_csvfile">
-        <classes>
-            <class name="orangeHRM.LoginAdminAccountTest_csvfile"/>
-        </classes>
-    </test>
     <test name="PrintAccountName">
         <classes>
             <class name="orangeHRM.PrintAccountNameTest"/>

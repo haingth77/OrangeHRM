@@ -27,7 +27,7 @@ public class ImportAndExtractDataTest {
         Browser.wait(selectProvinceButton);
         click(selectProvinceButton);
         String actualContextResult = Browser.getTextOfWebElements(provinceDropdownList);
-        String expectedContextResult = Browser.getDataFromCsvFile("F:/Automation Class/Project/OrangeHRMTest/src/main/resources/64ProvinceNameList.csv");
+        String expectedContextResult = Browser.getDataFromCsvFile("F:/Automation Class/Project/OrangeHRMTest/src/test/resources/64ProvinceNameList.csv");
         Assert.assertEquals(actualContextResult,expectedContextResult);
     }
 

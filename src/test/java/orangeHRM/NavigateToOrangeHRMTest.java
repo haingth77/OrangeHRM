@@ -1,42 +1,19 @@
 package orangeHRM;
 
 import common.Browser;
+import common.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import page.OrangeHRMPage;
 
-import static common.Browser.visit;
-
-public class NavigateToOrangeHRMTest {
+public class NavigateToOrangeHRMTest extends TestBase {
     OrangeHRMPage orangeHRMPage;
-
-    @DataProvider
-    Object[][] testData() {
-        return new Object[][]{
-                {"Admin", "admin123"}
-        };
-    }
-
-    @BeforeClass
-    void createPage() {
-        orangeHRMPage = new OrangeHRMPage();
-    }
-
-    @BeforeMethod
-    void openBrowser() {
-        Browser.openBrowser();
-        visit("https://opensource-demo.orangehrmlive.com/");
-    }
 
     @Test
     public void navigateToOrangeHRM() {
+        orangeHRMPage = new OrangeHRMPage();
         Assert.assertEquals(Browser.currentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         Assert.assertTrue(orangeHRMPage.checkVisibilityOfLoginLogo());
         Assert.assertTrue(orangeHRMPage.checkVisibilityOfUsernameTextBox());
-    }
-
-    @AfterMethod
-    void closeBrowser() {
-        Browser.closeBrowser();
     }
 }
