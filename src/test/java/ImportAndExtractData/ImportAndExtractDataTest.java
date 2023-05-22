@@ -24,7 +24,7 @@ public class ImportAndExtractDataTest {
 
     @Test
     public void ExtractData() throws IOException, CsvException {
-        Browser.wait(selectProvinceButton);
+        Browser.waitElement(selectProvinceButton);
         click(selectProvinceButton);
         String actualContextResult = Browser.getTextOfWebElements(provinceDropdownList);
         String expectedContextResult = Browser.getDataFromCsvFile("F:/Automation Class/Project/OrangeHRMTest/src/test/resources/64ProvinceNameList.csv");

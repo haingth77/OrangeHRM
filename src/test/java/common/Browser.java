@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
@@ -42,7 +41,7 @@ public class Browser {
         driver.findElement(locator).click();
     }
 
-    public static void wait(By locator) {
+    public static void waitElement(By locator) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_IN_SECONDS));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }

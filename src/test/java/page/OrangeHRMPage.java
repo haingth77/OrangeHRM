@@ -2,12 +2,6 @@ package page;
 
 import common.Browser;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-
-import static common.Browser.*;
 
 public class OrangeHRMPage {
     By usernameTextBox  = By.xpath("//input[@name='username']");
@@ -24,11 +18,11 @@ public class OrangeHRMPage {
 
 
     public void login(String username, String password) {
-        Browser.wait(usernameTextBox);
+        Browser.waitElement(usernameTextBox);
         Browser.fill(usernameTextBox, username);
         Browser.fill(passwordTextBox, password);
         Browser.click(loginButton);
-        Browser.wait(widgetCard);
+        Browser.waitElement(widgetCard);
     }
 
     public String getAccountName() {
@@ -40,37 +34,37 @@ public class OrangeHRMPage {
     }
 
     public boolean checkVisibilityOfDashBoardTitle() {
-        Browser.wait(dashBoardTitle);
+        Browser.waitElement(dashBoardTitle);
         return Browser.checkVisibility(dashBoardTitle);
     }
 
     public boolean checkVisibilityOfLoginLogo() {
-        Browser.wait(loginLogo);
+        Browser.waitElement(loginLogo);
         return Browser.checkVisibility(loginLogo);
     }
 
     public boolean checkVisibilityOfUsernameTextBox() {
-        Browser.wait(usernameTextBox);
+        Browser.waitElement(usernameTextBox);
         return Browser.checkVisibility(usernameTextBox);
     }
 
     public boolean checkVisibilityOfWidgetCard() {
-        Browser.wait(widgetCard);
+        Browser.waitElement(widgetCard);
         return Browser.checkVisibility(widgetCard);
     }
 
     public boolean checkVisibilityOfAdminPageTitle() {
-        Browser.wait(adminPageTitle);
+        Browser.waitElement(adminPageTitle);
         return Browser.checkVisibility(adminPageTitle);
     }
 
     public boolean checkVisibilityOfSystemUserFilter() {
-        Browser.wait(systemUserFilter);
+        Browser.waitElement(systemUserFilter);
         return Browser.checkVisibility(systemUserFilter);
     }
 
     public boolean checkVisibilityOfSystemUserRecord() {
-        Browser.wait(systemUserRecord);
+        Browser.waitElement(systemUserRecord);
         return Browser.checkVisibility(systemUserRecord);
     }
 
