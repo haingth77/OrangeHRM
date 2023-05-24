@@ -2,14 +2,9 @@ package orangeHRM;
 
 import common.Browser;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import page.OrangeHRMPage;
-import page.TimesheetTable;
-
-import java.util.List;
 
 import static common.Browser.*;
 
@@ -27,23 +22,37 @@ public class UpdateTimesheetTest {
      */
     By usernameTextBox  = By.xpath("//input[@name='username']");
     By timesheetTitle = By.xpath("//div[@class='orangehrm-timesheet-header']/div[@class='orangehrm-timesheet-header--title']");
-    OrangeHRMPage orangeHRMPage;
-    WebDriver driver;
+
+    @DataProvider
+    public Object[][] timesheetData() {
+        return new Object[][]{
+            {"ac", "", "8", "8", "1", "2", "3", "8", "9"}
+        };
+    }
     @BeforeClass
     public void open(){
         Browser.openBrowser();
         visit("https://opensource-demo.orangehrmlive.com/web/index.php/time/viewMyTimesheet");
+        Browser.waitElement(usernameTextBox);
+        login("Admin","admin123");
+        waitElement(timesheetTitle);
     }
 
     @Test
     public void UpdateTimesheetTest() {
-        orangeHRMPage = new OrangeHRMPage();
-        Browser.waitElement(usernameTextBox);
-        orangeHRMPage.login("Admin","admin123");
-        waitElement(timesheetTitle);
-        List<WebElement> rows = driver.findElements(By.xpath("//tbody[@class='orangehrm-timesheet-table-body']/tr[@class='orangehrm-timesheet-table-body-row']"));
-        List<TimesheetTable> timesheetTable = rows.stream().map(row -> {
+        Browser.getTimesheetTotalBefore();
+        System.out.println("123");
+        Browser.getTimesheetTable();
+        System.out.println("123");
+        Browser.getTimesheetTotalAfter();
 
-        });
+
+//        List<TimesheetTable> timesheetTotalBefore = rowsTable.stream().map(row -> {
+//
+//        });
+//        List<TimesheetTable> timesheetTotalAfter = rowsTable.stream().map(row -> {
+//
+//        });
+
     }
 }

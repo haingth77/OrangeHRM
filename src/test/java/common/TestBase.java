@@ -15,7 +15,7 @@ import static common.Browser.*;
 
 public class TestBase {
     public Object[][] getCredentialsObjectFromCsv() {
-        String fileName = "F:/Automation Class/Project/OrangeHRMTest/src/test/resources/username&password.csv";
+        String fileName = "D:/HaiNguyen_Private/IntelliJ/OrangeHRM/src/test/resources/username&password.csv";
         String[] csvCells;
         try {
             FileReader fileReader = new FileReader(fileName);

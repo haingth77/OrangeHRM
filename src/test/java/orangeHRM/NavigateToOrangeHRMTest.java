@@ -4,16 +4,16 @@ import common.Browser;
 import common.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.OrangeHRMPage;
+import page.NavigateOrangeHRMPage;
 
 public class NavigateToOrangeHRMTest extends TestBase {
-    OrangeHRMPage orangeHRMPage;
+    NavigateOrangeHRMPage navigateOrangeHRMPage;
 
     @Test
     public void navigateToOrangeHRM() {
-        orangeHRMPage = new OrangeHRMPage();
+        navigateOrangeHRMPage = new NavigateOrangeHRMPage();
         Assert.assertEquals(Browser.currentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        Assert.assertTrue(orangeHRMPage.checkVisibilityOfLoginLogo());
-        Assert.assertTrue(orangeHRMPage.checkVisibilityOfUsernameTextBox());
+        Assert.assertTrue(navigateOrangeHRMPage.checkVisibilityOfLoginLogo());
+        Assert.assertTrue(navigateOrangeHRMPage.checkVisibilityOfUsernameTextBox());
     }
 }

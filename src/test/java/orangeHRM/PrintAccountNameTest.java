@@ -4,18 +4,20 @@ import common.Browser;
 import common.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.OrangeHRMPage;
+import page.PrintAccountNamePage;
+
+import static common.Browser.login;
 
 
 public class PrintAccountNameTest extends TestBase {
-    OrangeHRMPage orangeHRMPage;
+    PrintAccountNamePage printAccountNamePage;
 
     @Test(dataProvider = "testData")
     public void PrintAccountName(String url, String username, String password) {
-        orangeHRMPage = new OrangeHRMPage();
-        orangeHRMPage.login(username, password);
-        System.out.println(orangeHRMPage.getAccountName());
+        printAccountNamePage = new PrintAccountNamePage();
+        login(username, password);
+        System.out.println(printAccountNamePage.getAccountName());
         Assert.assertEquals(Browser.currentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
-        Assert.assertNotEquals(orangeHRMPage.getAccountName(), "");
+        Assert.assertNotEquals(printAccountNamePage.getAccountName(), "");
     }
 }
