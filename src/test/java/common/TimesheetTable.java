@@ -1,4 +1,4 @@
-package page;
+package common;
 
 public class TimesheetTable {
     String project;
@@ -71,6 +71,11 @@ public class TimesheetTable {
     public String getTotalTime() {
         return this.total;
     }
+
+
+
+
+
 
 
 }
