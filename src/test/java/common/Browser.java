@@ -87,7 +87,6 @@ public class Browser {
         String[] csvCells;
         List<String> provinceNameCsv = new ArrayList<String>();
         CSVReader readcsv = new CSVReader(new FileReader(fileLoction));
-
         while ((csvCells = readcsv.readNext()) != null) {
             provinceNameCsv.add(csvCells[0]);
         }
@@ -104,13 +103,7 @@ public class Browser {
         executor.executeScript("arguments[0].click()",element);
         Thread.sleep(1000);
     }
-
-    public static void clickByAction(WebElement element) throws InterruptedException {
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript("arguments[0].click()",element);
-        Thread.sleep(1000);
-    }
-
+    
     public static void clearAllContent(By locator) {
         driver.findElement(locator).sendKeys(Keys.CONTROL+"a");
         driver.findElement(locator).sendKeys(Keys.DELETE);
