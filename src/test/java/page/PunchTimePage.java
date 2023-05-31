@@ -14,7 +14,6 @@ public class PunchTimePage {
     By submitButton = By.xpath("//div[@class='oxd-form-actions']/button[@type='submit']");
     By timeZoneField = By.xpath("//p[@class='oxd-text oxd-text--p']/span[@class='oxd-text oxd-text--span timezone']");
     By toggleButton = By.xpath("//div[@class='--toggle']/button[@class='oxd-icon-button']");
-    By clearRecordButton = By.xpath("//button[@type='button']/i[@class='oxd-icon bi-trash']");
     By clearFormButton = By.xpath("//button[@type='button']/i[@class='oxd-icon bi-trash-fill oxd-button-icon']");
     By numberOfRecordField = By.xpath("//span[@class='oxd-text oxd-text--span']");
     By confirmClearRecordButton = By.xpath("//button[@type='button']/i[@class='oxd-icon bi-trash oxd-button-icon']");

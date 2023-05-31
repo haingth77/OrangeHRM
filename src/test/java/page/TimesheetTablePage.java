@@ -43,7 +43,6 @@ public class TimesheetTablePage {
             return new TimesheetTable(project, activity, monday, tuesday, wednesday, thursday, friday, satuday, sunday, total);
         }).collect(Collectors.toList());
         timesheetTables.forEach(TimesheetTable::infor);
-        System.out.println(timesheetTables.size());
         return null;
     }
 
@@ -53,7 +52,6 @@ public class TimesheetTablePage {
             List<WebElement> optionActivitys = Browser.listWebElement(By.xpath("//div[@class='oxd-select-option']/span"));
             System.out.println(optionActivitys.size());
             for(WebElement optionActivity : optionActivitys) {
-                System.out.println(optionActivity.getText());
                 if (optionActivity.getText().equalsIgnoreCase(activityName)) {
                     optionActivity.click();
                     break;
@@ -65,7 +63,6 @@ public class TimesheetTablePage {
         List<WebElement> projectTextboxes = Browser.listWebElement(projectTextbox);
         WebElement newProjectTextbox = projectTextboxes.get(((projectTextboxes.size())-1));
         Browser.waitElement(projectTextbox);
-        System.out.println(projectTextboxes.size());
         newProjectTextbox.click();
         newProjectTextbox.sendKeys(Keys.CONTROL + "a");
         newProjectTextbox.sendKeys(Keys.DELETE);
