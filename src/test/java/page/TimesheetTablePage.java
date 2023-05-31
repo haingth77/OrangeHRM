@@ -10,10 +10,8 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static common.Browser.listWebElement;
-
 public class TimesheetTablePage {
-    By rowTable = By.xpath("//table[@class='orangehrm-timesheet-table']/tbody[@class='orangehrm-timesheet-table-body']/tr[@class='orangehrm-timesheet-table-body-row'][last()]");
+    By lastRowOfTable = By.xpath("//table[@class='orangehrm-timesheet-table']/tbody[@class='orangehrm-timesheet-table-body']/tr[@class='orangehrm-timesheet-table-body-row'][last()]");
     By projectTextbox = By.xpath("//input[@placeholder='Type for hints...']");
     By dropdownbox = By.xpath("//div[@role='listbox']");
     By activityButton = By.xpath("//div[@class='oxd-select-text-input']");
@@ -29,7 +27,7 @@ public class TimesheetTablePage {
 
     public TimesheetTable getTimesheetTable() {
         Browser.waitElement(By.xpath("//table[@class='orangehrm-timesheet-table']/tbody[@class='orangehrm-timesheet-table-body']/tr[@class='orangehrm-timesheet-table-body-row']"));
-        List<WebElement> rowTables = Browser.listWebElement(rowTable);
+        List<WebElement> rowTables = Browser.listWebElement(lastRowOfTable);
         timesheetTables = rowTables.stream().map(rowTable -> {
             List<WebElement> cells = rowTable.findElements(By.tagName("td"));
             String project = cells.get(0).getText();
