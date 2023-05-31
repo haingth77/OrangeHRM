@@ -1,10 +1,12 @@
 package orangeHRM;
 
 import common.Browser;
+import common.TestBase;
 import common.TimesheetTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,7 +16,7 @@ import java.util.List;
 
 import static common.Browser.*;
 
-public class UpdateTimesheetTest {
+public class UpdateTimesheetTest extends TestBase {
     /*
     Precondition: if there is total -> get total to compare
     s1: click "edit" button - wait
@@ -36,23 +38,12 @@ public class UpdateTimesheetTest {
     By notificationTitle = By.xpath("//p[@class='oxd-text oxd-text--p oxd-text--toast-title oxd-toast-content-text']");
     By notificationContent = By.xpath("//p[@class='oxd-text oxd-text--p oxd-text--toast-message oxd-toast-content-text']");
     By saveButton = By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']");
-    @DataProvider
-    public Object[][] timesheetData() {
-        return new Object[][]{
-            {"ac", "ACME Ltd - ACME Ltd", "Bug Fixes", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "28:00"}
-        };
-    }
-
-    @BeforeClass
-    public void open(){
-        Browser.openBrowser();
-        visit("https://opensource-demo.orangehrmlive.com/web/index.php/time/viewMyTimesheet");
-        login("Admin","admin123");
-        waitElement(timesheetTitle);
-    }
 
     @Test (dataProvider = "timesheetData")
-    public void UpdateTimesheetTest(String briefProjectname, String projectName, String activityName, String monday, String tuesday, String wednesday, String thursday, String friday, String satuday, String sunday, String total) throws InterruptedException {
+    public void UpdateTimesheetTest(String username, String password, String briefProjectname, String projectName, String activityName, String monday, String tuesday, String wednesday, String thursday, String friday, String satuday, String sunday, String total) throws InterruptedException {
+        visit("https://opensource-demo.orangehrmlive.com/web/index.php/time/viewMyTimesheet");
+        login(username,password);
+        waitElement(timesheetTitle);
         timesheetTablePage = new TimesheetTablePage();
         TimesheetTable Data = new TimesheetTable(
                 projectName,
@@ -66,20 +57,10 @@ public class UpdateTimesheetTest {
                 sunday,
                 total
         );
-        Browser.waitElement(editButton);
-        Browser.click(editButton);
-        Browser.waitElement(addRowButton);
-        List<WebElement> clearTimesheets = Browser.listWebElement(clearTimesheetButton);
-        if (listWebElement(rowTable).size() < 1) {
-            Browser.click(addRowButton);
-        } else {
-            clearTimesheets.forEach(clearTimesheet -> clearTimesheet.click());
-        }
+        timesheetTablePage.startToUpdateTimeSheet();
         timesheetTablePage.addNewTimesheet(briefProjectname,projectName);
         timesheetTablePage.selectDropdown(activityName);
         timesheetTablePage.fillTimesheet(monday, tuesday, wednesday, thursday, friday, satuday, sunday);
-        Browser.click(saveButton);
-        Browser.waitElement(notificationFrame);
         Assert.assertTrue(Browser.checkVisibility(notificationFrame));
         Assert.assertEquals(Browser.getText(notificationTitle),"Success");
         Assert.assertEquals(Browser.getText(notificationContent),"Successfully Saved");

@@ -6,8 +6,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import page.LoginAdminAccountPage;
 
-import static common.Browser.currentUrl;
-import static common.Browser.login;
+import static common.Browser.*;
 
 public class LoginAdminAccount_parameter extends TestBase {
     LoginAdminAccountPage loginAdminAccountPage;
@@ -15,8 +14,9 @@ public class LoginAdminAccount_parameter extends TestBase {
     @Test
     @Parameters({"username","password"})
     public void loginAdminAccount(String username, String password) {
-        loginAdminAccountPage = new LoginAdminAccountPage();
+        visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         login(username, password);
+        loginAdminAccountPage = new LoginAdminAccountPage();
         Assert.assertEquals(currentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
         Assert.assertTrue(loginAdminAccountPage.checkVisibilityOfWidgetCard());
         Assert.assertTrue(loginAdminAccountPage.checkVisibilityOfDashBoardTitle());

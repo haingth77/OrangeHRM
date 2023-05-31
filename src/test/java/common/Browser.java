@@ -2,10 +2,9 @@ package common;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page.TimesheetTablePage;
@@ -21,7 +20,6 @@ public class Browser {
     private static By usernameTextBox  = By.xpath("//input[@name='username']");
     private static By passwordTextBox  = By.xpath("//input[@name='password']");
     private static By loginButton      = By.xpath("//div[@class='oxd-form-actions orangehrm-login-action']/button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']");
-    private static By widgetCard       = By.xpath("//div[@class='orangehrm-dashboard-widget-name']/p[@class='oxd-text oxd-text--p']");
     private static By accountNamefield = By.xpath("//span[@class='oxd-userdropdown-tab']/p[@class='oxd-userdropdown-name']");
 
     private static WebDriver driver;
@@ -30,6 +28,7 @@ public class Browser {
 
     public static void openBrowser() {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     public static void visit(String url) {
@@ -51,6 +50,16 @@ public class Browser {
     public static void waitElement(By locator) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_IN_SECONDS));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public static void waitContentOfElement (By locator, String content) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_IN_SECONDS));
+        wait.until(ExpectedConditions.textToBe(locator,content));
+    }
+
+    public static void waitUntilElementClickable(By locator) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_IN_SECONDS));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public static String getText(By locator) {
@@ -85,18 +94,31 @@ public class Browser {
         return provinceNameCsv.toString().replace("\uFEFF","");
     }
 
-
     public static List<WebElement> listWebElement(By locator) {
         return driver.findElements(locator);
     }
 
+    public static void clickByJavaScript(By locator) throws InterruptedException {
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click()",element);
+        Thread.sleep(1000);
+    }
 
+    public static void clickByAction(WebElement element) throws InterruptedException {
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click()",element);
+        Thread.sleep(1000);
+    }
 
+    public static void clearAllContent(By locator) {
+        driver.findElement(locator).sendKeys(Keys.CONTROL+"a");
+        driver.findElement(locator).sendKeys(Keys.DELETE);
+    }
 
     public static void closeBrowser() {
         if (driver!=null) {
             driver.quit();
         }
     }
-
 }

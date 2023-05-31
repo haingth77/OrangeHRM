@@ -10,12 +10,21 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static common.Browser.listWebElement;
+
 public class TimesheetTablePage {
     By rowTable = By.xpath("//table[@class='orangehrm-timesheet-table']/tbody[@class='orangehrm-timesheet-table-body']/tr[@class='orangehrm-timesheet-table-body-row'][last()]");
     By projectTextbox = By.xpath("//input[@placeholder='Type for hints...']");
     By dropdownbox = By.xpath("//div[@role='listbox']");
     By activityButton = By.xpath("//div[@class='oxd-select-text-input']");
     By timeTextbox = By.xpath("//div[@data-v-957b4417]/input[@class='oxd-input oxd-input--active']");
+    By editButton = By.xpath("//div[@class='orangehrm-timesheet-footer--options']/button[@class='oxd-button oxd-button--medium oxd-button--ghost']");
+    By clearTimesheetButton = By.xpath("//button[@class='oxd-icon-button orangehrm-timesheet-icon']/i[@class='oxd-icon bi-trash']");
+    By addRowButton = By.xpath("//button[@class='oxd-icon-button orangehrm-timesheet-icon']/i[@class='oxd-icon bi-plus']");
+    By rowTableInEditForm = By.xpath("//tbody/tr[@class='orangehrm-timesheet-table-body-row']");
+    By notificationFrame = By.xpath("//div[@class='oxd-toast oxd-toast--success oxd-toast-container--toast']");
+    By saveButton = By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']");
+
     List<TimesheetTable> timesheetTables;
 
     public TimesheetTable getTimesheetTable() {
@@ -101,5 +110,19 @@ public class TimesheetTablePage {
         timeDays.get(timeDayTextBoxOrder-3).sendKeys(friday);
         timeDays.get(timeDayTextBoxOrder-2).sendKeys(satuday);
         timeDays.get(timeDayTextBoxOrder-1).sendKeys(sunday);
+        Browser.click(saveButton);
+        Browser.waitElement(notificationFrame);
+    }
+
+    public void startToUpdateTimeSheet() {
+        Browser.waitElement(editButton);
+        Browser.click(editButton);
+        Browser.waitElement(addRowButton);
+        List<WebElement> clearTimesheets = Browser.listWebElement(clearTimesheetButton);
+        if (Browser.listWebElement(rowTableInEditForm).size() < 1) {
+            Browser.click(addRowButton);
+        } else {
+            clearTimesheets.forEach(clearTimesheet -> clearTimesheet.click());
+        }
     }
 }

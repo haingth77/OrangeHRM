@@ -36,11 +36,23 @@ public class TestBase {
         return getCredentialsObjectFromCsv();
     }
 
+    @DataProvider
+    public Object[][] testDataForPunchTime () {
+        return new Object[][]{
+                {"Admin", "admin123", "2023-06-02", "12:00 AM", "test123", "12:30 AM", "test456"}
+        };
+    }
+
+    @DataProvider
+    public Object[][] timesheetData() {
+        return new Object[][]{
+                {"Admin", "admin123", "ac", "ACME Ltd - ACME Ltd", "Bug Fixes", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "28:00"}
+        };
+    }
+
     @BeforeClass(alwaysRun = true)
     public void open() {
         openBrowser();
-        var url = getCredentialsObjectFromCsv()[0][0];
-        visit((String) url);
     }
 
     @AfterClass(alwaysRun = true)
