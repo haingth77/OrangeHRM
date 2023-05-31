@@ -43,7 +43,7 @@ public class UpdateTimesheetTest extends TestBase {
         Assert.assertEquals(Browser.getText(notificationTitle),"Success");
         Assert.assertEquals(Browser.getText(notificationContent),"Successfully Saved");
         TimesheetTable timesheetTable = timesheetTablePage.getTimesheetTable();
-        boolean result = timesheetTablePage.compareObject(timesheetTable,Data);
+        boolean result = timesheetTablePage.compareTimesheetTable(timesheetTable,Data);
         Assert.assertTrue(result);
     }
 }

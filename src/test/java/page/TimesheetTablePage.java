@@ -82,7 +82,7 @@ public class TimesheetTablePage {
         }
     }
 
-    public boolean compareObject(TimesheetTable actualTimesheetTable, TimesheetTable expectTimesheetTable) {
+    public boolean compareTimesheetTable(TimesheetTable actualTimesheetTable, TimesheetTable expectTimesheetTable) {
         for (Field f : TimesheetTable.class.getFields()) {
             try {
                 if (!f.get(actualTimesheetTable).equals(f.get(expectTimesheetTable)))
