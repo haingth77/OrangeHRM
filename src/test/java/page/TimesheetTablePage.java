@@ -47,7 +47,7 @@ public class TimesheetTablePage {
         return null;
     }
 
-    public void selectDropdown(String activityName) throws InterruptedException {
+    public void selectActivity(String activityName) throws InterruptedException {
             Browser.click(activityButton);
             Thread.sleep(3000);
             List<WebElement> optionActivitys = Browser.listWebElement(By.xpath("//div[@class='oxd-select-option']/span"));
@@ -61,7 +61,7 @@ public class TimesheetTablePage {
             }
     }
 
-    public void addNewTimesheet(String briefProjectName, String projectName) throws InterruptedException {
+    public void selectProject(String briefProjectName, String projectName) throws InterruptedException {
         List<WebElement> projectTextboxes = Browser.listWebElement(projectTextbox);
         WebElement newProjectTextbox = projectTextboxes.get(((projectTextboxes.size())-1));
         Browser.waitElement(projectTextbox);

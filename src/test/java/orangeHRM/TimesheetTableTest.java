@@ -10,7 +10,7 @@ import page.TimesheetTablePage;
 
 import static common.Browser.*;
 
-public class UpdateTimesheetTest extends TestBase {
+public class TimesheetTableTest extends TestBase {
     TimesheetTablePage timesheetTablePage;
     By timesheetTitle = By.xpath("//div[@class='orangehrm-timesheet-header']/div[@class='orangehrm-timesheet-header--title']");
     By notificationFrame = By.xpath("//div[@class='oxd-toast oxd-toast--success oxd-toast-container--toast']");
@@ -36,8 +36,8 @@ public class UpdateTimesheetTest extends TestBase {
                 total
         );
         timesheetTablePage.startToUpdateTimeSheet();
-        timesheetTablePage.addNewTimesheet(briefProjectname,projectName);
-        timesheetTablePage.selectDropdown(activityName);
+        timesheetTablePage.selectProject(briefProjectname,projectName);
+        timesheetTablePage.selectActivity(activityName);
         timesheetTablePage.fillTimesheet(monday, tuesday, wednesday, thursday, friday, satuday, sunday);
         Assert.assertTrue(Browser.checkVisibility(notificationFrame));
         Assert.assertEquals(Browser.getText(notificationTitle),"Success");
