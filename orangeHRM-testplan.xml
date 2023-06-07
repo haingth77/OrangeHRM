@@ -1,29 +1,6 @@
-<suite name="OrangeHRM life">
-    <test name="OrangeHRMPage">
-        <classes>
-            <class name="orangeHRM.NavigateToOrangeHRMTest"/>
-        </classes>
-    </test>
-    <test name="LoginAdminAccount">
-        <classes>
-            <class name="orangeHRM.LoginAdminAccountTest"/>
-        </classes>
-    </test>
-    <test name="LoginAdminAccount_parameter">
-        <parameter name="username" value="Admin"/>
-        <parameter name="password" value="admin123"/>
-        <classes>
-            <class name="orangeHRM.LoginAdminAccount_parameter"/>
-        </classes>
-    </test>
-    <test name="PrintAccountName">
-        <classes>
-            <class name="orangeHRM.PrintAccountNameTest"/>
-        </classes>
-    </test>
-    <test name="AdminPage">
-        <classes>
-            <class name="orangeHRM.NavigateAdminPageTest"/>
-        </classes>
-    </test>
+<suite name="allSuite">
+    <suite-files>
+        <suite-file path="orangeHRM-testSuite_1.xml"/>
+        <suite-file path="orangeHRM-testSuite_2.xml"/>
+    </suite-files>
 </suite>

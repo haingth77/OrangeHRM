@@ -1,0 +1,12 @@
+<suite name="OrangeHRM life_2">
+    <test name="TimesheetTableTest">
+        <classes>
+            <class name="orangeHRM.TimesheetTableTest"/>
+        </classes>
+    </test>
+    <test name="PunchTimeTest">
+        <classes>
+            <class name="orangeHRM.PuchTimeTest"/>
+        </classes>
+    </test>
+</suite>
