@@ -40,7 +40,6 @@ public class PunchTimePage {
     By PMButton = By.xpath("//div[@class='oxd-time-period-label']/input[@name='pm']");
     public void fillPunchDate(String punchInOrPunchOut, String dateIn) throws InterruptedException {
         Thread.sleep(1000);
-        Browser.waitElement(punchTitle);
         Browser.waitContentOfElement(punchTitle,punchInOrPunchOut);
         Browser.waitElement(dateTextbox);
         Browser.clickByJavaScript(dateTextbox);
@@ -100,7 +99,7 @@ public class PunchTimePage {
         return Browser.listWebElement(locator).stream().map(WebElement::getText).collect(Collectors.toList()).toString();
     }
 
-    public void chooseYear(String dateIn) {
+    public void chooseYear(String punchInOrPunchOut, String dateIn) {
         Integer targetYear = Integer.parseInt(dateIn.split("-")[0]);
         Browser.click(dateButton);
         Browser.waitElement(yearButton);
@@ -116,7 +115,7 @@ public class PunchTimePage {
         }
     }
 
-    public void chooseMonth(String dateIn) {
+    public void chooseMonth(String punchInOrPunchOut, String dateIn) {
         HashMap<String,String> map = new HashMap();
         map.put("01", "January");
         map.put("02", "February");
@@ -145,7 +144,7 @@ public class PunchTimePage {
         }
     }
 
-    public void chooseDate(String dateIn) {
+    public void chooseDate(String punchInOrPunchOut, String dateIn) {
         Integer targetDate = Integer.parseInt(dateIn.split("-")[2]);
         Browser.waitElement(dateSelection);
         List<WebElement> dateSelections = Browser.listWebElement(dateSelection);
@@ -157,12 +156,13 @@ public class PunchTimePage {
         }
     }
 
-    public void chooseTime(String time){
+    public void chooseTime(String punchInOrPunchOut, String time){
         Integer differenceHour, differenceMinute;
         String timePeriod;
         Calendar calendar = Calendar.getInstance();
         Integer hour = new Integer(calendar.get(Calendar.HOUR));
         Integer minute = new Integer(calendar.get(Calendar.MINUTE));
+        Browser.waitElement(timeButton);
         Browser.click(timeButton);
         Browser.waitElement(hourPlusButton);
         timePeriod = time.split(" ")[1];

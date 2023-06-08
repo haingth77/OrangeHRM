@@ -28,11 +28,10 @@ public class PuchTimeTest extends TestBase {
         punchTimePage.clearOtherRecord();
         visit("https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchIn");
         punchTimePage.completePreviousPunchTime();
-        punchTimePage.chooseYear(dateIn);
-        punchTimePage.chooseMonth(dateIn);
-        punchTimePage.chooseDate(dateIn);
-        punchTimePage.chooseTime(timeIn);
-
+        punchTimePage.chooseYear("Punch In", dateIn);
+        punchTimePage.chooseMonth("Punch In", dateIn);
+        punchTimePage.chooseDate("Punch In", dateIn);
+        punchTimePage.chooseTime("Punch In", timeIn);
         punchTimePage.fillNote("Punch In", noteIn);
         punchTimePage.fillPunchDate("Punch Out",dateIn);
         punchTimePage.fillPunchTime("Punch Out", timeOut);
