@@ -8,7 +8,6 @@ public class TimesheetTable {
     String wednesday;
     String thursday;
     String friday;
-
     String satuday;
     String sunday;
     String total;
@@ -38,44 +37,4 @@ public class TimesheetTable {
         System.out.println(this.sunday);
         System.out.println(this.total);
     }
-
-    public String getProjectName() {
-        System.out.println(project);
-        return project;
-    }
-
-    public String getActivityName() {
-        return this.activity;
-    }
-
-    public String getMondayTime() {
-        return this.monday;
-    }
-
-    public String getTuesdayTime() {
-        return this.tuesday;
-    }
-
-    public String getWednesdayTime() {
-        return this.wednesday;
-    }
-
-    public String getThursdayTime() {
-        return this.thursday;
-    }
-
-    public String getFridayTime() {
-        return this.friday;
-    }
-
-    public String getTotalTime() {
-        return this.total;
-    }
-
-
-
-
-
-
-
 }

@@ -33,6 +33,8 @@ public class PuchTimeTest extends TestBase {
         punchTimePage.chooseDate("Punch In", dateIn);
         punchTimePage.chooseTime("Punch In", timeIn);
         punchTimePage.fillNote("Punch In", noteIn);
+
+
         punchTimePage.fillPunchDate("Punch Out",dateIn);
         punchTimePage.fillPunchTime("Punch Out", timeOut);
         punchTimePage.fillNote("Punch Out", noteOut);

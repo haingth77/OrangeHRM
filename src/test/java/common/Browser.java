@@ -114,4 +114,19 @@ public class Browser {
             driver.quit();
         }
     }
+
+    public static void dragAndDropBy(By locator, int targetTopPosition, int targetLeftPosition) {
+        Actions action = new Actions(driver);
+        WebElement element = driver.findElement(locator);
+        Point currentLocation = element.getLocation();
+        int topDifference = targetTopPosition - currentLocation.getY();
+        int leftDifference = targetLeftPosition - currentLocation.getX();
+        System.out.println("Y location: "+ currentLocation.getY());
+        System.out.println("X location: "+ currentLocation.getX());
+        System.out.println("topDifference: "+ topDifference);
+        System.out.println("leftDifference: "+ leftDifference);
+        //action.moveToElement(element).click().dragAndDropBy(element, topDifference, leftDifference).build().perform();
+        action.dragAndDropBy(element, topDifference, leftDifference).perform();
+
+    }
 }

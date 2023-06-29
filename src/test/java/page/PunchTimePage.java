@@ -106,6 +106,7 @@ public class PunchTimePage {
         Browser.click(yearButton);
         Browser.waitElement(yearDropdownSelection);
         Integer currentYear = Integer.parseInt(Browser.getText(yearDropdownCurrent));
+//Select year by comparing value from list and targetYear
         List<WebElement> yearSelections = Browser.listWebElement(yearDropdownSelection);
         if (targetYear != currentYear) {
             for (WebElement year: yearSelections) {
@@ -116,6 +117,7 @@ public class PunchTimePage {
     }
 
     public void chooseMonth(String punchInOrPunchOut, String dateIn) {
+//Convert from number into month
         HashMap<String,String> map = new HashMap();
         map.put("01", "January");
         map.put("02", "February");
@@ -134,6 +136,7 @@ public class PunchTimePage {
         Browser.waitElement(monthButton);
         Browser.click(monthButton);
         Browser.waitElement(monthDropdownSelection);
+//Select month by comparing value from list and targetMonth
         String currentMonth = Browser.getText(monthDropdownCurrent);
         List<WebElement> monthSelections = Browser.listWebElement(monthDropdownSelection);
         if (!targetMonth.equals(currentMonth)) {
@@ -147,6 +150,7 @@ public class PunchTimePage {
     public void chooseDate(String punchInOrPunchOut, String dateIn) {
         Integer targetDate = Integer.parseInt(dateIn.split("-")[2]);
         Browser.waitElement(dateSelection);
+//Select date by comparing value from list and targetDate
         List<WebElement> dateSelections = Browser.listWebElement(dateSelection);
         for (WebElement date: dateSelections) {
             if (Integer.parseInt(date.getText()) == targetDate) {
@@ -165,12 +169,14 @@ public class PunchTimePage {
         Browser.waitElement(timeButton);
         Browser.click(timeButton);
         Browser.waitElement(hourPlusButton);
+//Set "AM" or "PM" for punch time
         timePeriod = time.split(" ")[1];
         if (timePeriod.equals("AM")) {
             Browser.click(AMButton);
         } else {
             Browser.click(PMButton);
         }
+//Set hour for punch time by clicking button for each hour
         differenceHour = Integer.parseInt((time.split("// ")[0]).split(":")[0]) - hour;
         if (differenceHour > 0) {
             for (int count = 0; count < abs(differenceHour); count++) {
@@ -181,6 +187,7 @@ public class PunchTimePage {
                 Browser.click(hourMinusButton);
             }
         }
+//Set minute for punch time by clicking button for each minute
         differenceMinute = Integer.parseInt((time.split(" ")[0]).split(":")[1]) - minute;
         if (differenceMinute > 0) {
             for (int count = 0; count < abs(differenceMinute); count++) {

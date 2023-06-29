@@ -93,10 +93,12 @@ public class TimesheetTablePage {
 
     public void fillTimesheet(String monday, String tuesday, String wednesday, String thursday, String friday, String satuday, String sunday) {
         List<WebElement> timeDays = Browser.listWebElement(timeTextbox);
+//Clear context in all timeTextbox
         timeDays.forEach(timeDay -> {
             timeDay.sendKeys(Keys.CONTROL+"a");
             timeDay.sendKeys(Keys.DELETE);
         });
+//Fill context into timeTextbox
         Integer timeDayTextBoxOrder = timeDays.size();
         timeDays.get(timeDayTextBoxOrder-7).sendKeys(monday);
         timeDays.get(timeDayTextBoxOrder-6).sendKeys(tuesday);

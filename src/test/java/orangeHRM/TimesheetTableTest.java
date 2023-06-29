@@ -18,7 +18,7 @@ public class TimesheetTableTest extends TestBase {
     By notificationContent = By.xpath("//p[@class='oxd-text oxd-text--p oxd-text--toast-message oxd-toast-content-text']");
 
     @Test (dataProvider = "timesheetData")
-    public void UpdateTimesheetTest(String username, String password, String briefProjectname, String projectName, String activityName, String monday, String tuesday, String wednesday, String thursday, String friday, String satuday, String sunday, String total) throws InterruptedException {
+    public void UpdateTimesheetTest(String username, String password, String briefProjectName, String projectName, String activityName, String monday, String tuesday, String wednesday, String thursday, String friday, String satuday, String sunday, String total) throws InterruptedException {
         visit("https://opensource-demo.orangehrmlive.com/web/index.php/time/viewMyTimesheet");
         login(username,password);
         waitElement(timesheetTitle);
@@ -36,7 +36,7 @@ public class TimesheetTableTest extends TestBase {
                 total
         );
         timesheetTablePage.startToUpdateTimeSheet();
-        timesheetTablePage.selectProject(briefProjectname,projectName);
+        timesheetTablePage.selectProject(briefProjectName,projectName);
         timesheetTablePage.selectActivity(activityName);
         timesheetTablePage.fillTimesheet(monday, tuesday, wednesday, thursday, friday, satuday, sunday);
         Assert.assertTrue(Browser.checkVisibility(notificationFrame));
