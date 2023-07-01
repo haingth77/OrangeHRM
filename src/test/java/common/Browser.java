@@ -7,8 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page.TimesheetTablePage;
 
+import java.awt.*;
+import java.awt.Robot;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
@@ -26,6 +29,16 @@ public class Browser {
     private static final int TIME_OUT_IN_SECONDS = 10;
     private static WebDriverWait wait ;
 
+    public static Robot initialRobot() {
+        java.awt.Robot robot = null;
+        try {
+            robot = new java.awt.Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        return robot;
+    }
+
     public static void openBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -37,6 +50,10 @@ public class Browser {
 
     public static String currentUrl() {
         return driver.getCurrentUrl();
+    }
+
+    public static WebElement element(By locator) {
+        return driver.findElement(locator);
     }
 
     public static void fill(By locator, String withText) {
@@ -114,19 +131,49 @@ public class Browser {
             driver.quit();
         }
     }
-
-    public static void dragAndDropBy(By locator, int targetTopPosition, int targetLeftPosition) {
+    public static void dragAndDropBy(By locator, int xOffset, int yOffset) {
         Actions action = new Actions(driver);
-        WebElement element = driver.findElement(locator);
-        Point currentLocation = element.getLocation();
-        int topDifference = targetTopPosition - currentLocation.getY();
-        int leftDifference = targetLeftPosition - currentLocation.getX();
-        System.out.println("Y location: "+ currentLocation.getY());
-        System.out.println("X location: "+ currentLocation.getX());
-        System.out.println("topDifference: "+ topDifference);
-        System.out.println("leftDifference: "+ leftDifference);
-        //action.moveToElement(element).click().dragAndDropBy(element, topDifference, leftDifference).build().perform();
-        action.dragAndDropBy(element, topDifference, leftDifference).perform();
+        Browser.waitElement(locator);
+        WebElement element = Browser.element(locator);
+        action.dragAndDropBy(element, xOffset, yOffset).perform();
+    }
 
+    public static void uploadFile(By locator, String filePath) throws InterruptedException {
+        Browser.click(locator);
+        StringSelection stringSelection = new StringSelection(filePath);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        Thread.sleep(500);
+        Robot robot = initialRobot();
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        Thread.sleep(500);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_V);
+        Thread.sleep(500);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        Thread.sleep(500);
+    }
+
+    public static void keyboardPaste(By locator,String string) throws InterruptedException{
+        Browser.click(locator);
+        StringSelection stringSelection = new StringSelection(string);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        Robot robot = initialRobot();
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_A);
+        Thread.sleep(500);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_A);
+        Thread.sleep(500);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        Thread.sleep(500);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_V);
+        Thread.sleep(500);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        Thread.sleep(500);
     }
 }

@@ -55,8 +55,8 @@ public class TestBase {
         openBrowser();
     }
 
-    @AfterClass(alwaysRun = true)
-    public void close() {
-        closeBrowser();
-    }
+//    @AfterClass(alwaysRun = true)
+//    public void close() {
+//        closeBrowser();
+//    }
 }
