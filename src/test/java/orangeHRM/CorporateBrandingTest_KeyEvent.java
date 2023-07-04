@@ -5,17 +5,19 @@ import common.TestBase;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.CorporateBrandingPage;
+import page.CorporateBrandingPage_KeyEvent;
 
-import static common.Browser.*;
+import static common.Browser.waitElement;
 
-public class CorporateBrandingTest extends TestBase {
+public class CorporateBrandingTest_KeyEvent extends TestBase {
     By primaryColorButton = By.xpath("//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div/div/div[@class='oxd-color-input-preview']");
-    By pickerRangePointer = By.xpath("//input[@class='oxd-color-picker-range']");
-    By pickerIndicatorPointer = By.xpath("//div[@class='oxd-color-picker-indicator']");
+    By secondaryColorButton = By.xpath("//div[@class='oxd-grid-item oxd-grid-item--gutters --offset-column-3']/div/div/div/div[@class='oxd-color-input-preview']");
+    By primaryGradientColor1Button = By.xpath("//div[@class='oxd-grid-item oxd-grid-item--gutters --offset-row-3']/div/div/div/div[@class='oxd-color-input-preview']");
+    By primaryGradientColor2Button = By.xpath("//div[@class='oxd-grid-item oxd-grid-item--gutters --offset-row-3 --offset-column-3']/div/div/div/div[@class='oxd-color-input-preview']");
     By notificationTitle = By.xpath("//p[@class='oxd-text oxd-text--p oxd-text--toast-title oxd-toast-content-text']");
     By notificationContent = By.xpath("//p[@class='oxd-text oxd-text--p oxd-text--toast-message oxd-toast-content-text']");
     By notificationFrame = By.xpath("//div[@class='oxd-toast oxd-toast--success oxd-toast-container--toast']");
+    By hexColorCodeTextbox = By.xpath("//div[@role='alert']/input[@class='oxd-input oxd-input--active']");
     By clientLogoBrowseButton = By.xpath("//div[@class='oxd-file-div oxd-file-div--active']/div[@class='oxd-file-button']");
     By clientBannerBrowseButton = By.xpath("//div[@class='oxd-grid-2 orangehrm-full-width-grid']/div[2]/div/div/div/div/div[@class='oxd-file-button']");
     By loginBannerBrowseButton = By.xpath("//div[@class='oxd-grid-2 orangehrm-full-width-grid']/div[3]/div/div/div/div/div[@class='oxd-file-button']");
@@ -27,34 +29,33 @@ public class CorporateBrandingTest extends TestBase {
     String filePath_clientLogo = "D:\\HaiNguyen_Private\\IntelliJ\\OrangeHRM\\src\\test\\resources\\pikachu.jpg";
     String filePath_clientBanner = "D:\\HaiNguyen_Private\\IntelliJ\\OrangeHRM\\src\\test\\resources\\pikachu_clientBanner.jpg";
     String filePath_loginBanner = "D:\\HaiNguyen_Private\\IntelliJ\\OrangeHRM\\src\\test\\resources\\pikachu_loginBanner.jpg";
-    CorporateBrandingPage corporateBrandingPage;
+    CorporateBrandingPage_KeyEvent corporateBrandingPage_keyEvent;
 
     @Test
-    public void CorporateBrandingTest() throws InterruptedException {
-        corporateBrandingPage = new CorporateBrandingPage();
+    public void CorporateBrandingTest_KeyEvent() throws InterruptedException {
+        corporateBrandingPage_keyEvent = new CorporateBrandingPage_KeyEvent();
+
         Browser.visit("https://opensource-demo.orangehrmlive.com/web/index.php/admin/addTheme");
-        Browser.login("Admin","admin123");
+        Browser.login("Admin", "admin123");
         Browser.waitElement(resetButton);
         Thread.sleep(500);
         Browser.click(resetButton);
         Thread.sleep(1000);
-
-        waitElement(primaryColorButton);
-        Browser.click(primaryColorButton);
-        corporateBrandingPage.selectColorByDragAndDrop(pickerIndicatorPointer,550, 350);
-        corporateBrandingPage.selectColorByDragAndDrop(pickerRangePointer,510, 499);
+        corporateBrandingPage_keyEvent.inputColorCode(primaryColorButton, hexColorCodeTextbox, "#834f97");
+        corporateBrandingPage_keyEvent.inputColorCode(secondaryColorButton, hexColorCodeTextbox, "#9fa7cf");
+        corporateBrandingPage_keyEvent.inputColorCode(primaryGradientColor1Button, hexColorCodeTextbox, "#7be0f4");
+        corporateBrandingPage_keyEvent.inputColorCode(primaryGradientColor2Button, hexColorCodeTextbox, "#d691d2");
 
         Browser.uploadFile(clientLogoBrowseButton, filePath_clientLogo);
         Browser.uploadFile(clientBannerBrowseButton, filePath_clientBanner);
-        Browser.uploadFile(loginBannerBrowseButton,filePath_loginBanner);
-        
+        Browser.uploadFile(loginBannerBrowseButton, filePath_loginBanner);
         Browser.click(submitButton);
         waitElement(notificationFrame);
-        Assert.assertEquals(Browser.getText(notificationTitle),"Success");
-        Assert.assertEquals(Browser.getText(notificationContent),"Successfully Saved");
+        Assert.assertEquals(Browser.getText(notificationTitle), "Success");
+        Assert.assertEquals(Browser.getText(notificationContent), "Successfully Saved");
         Browser.waitElement(clientLogo);
-        Assert.assertEquals(Browser.getText(clientLogo), corporateBrandingPage.extractFileName(filePath_clientLogo));
-        Assert.assertEquals(Browser.getText(clientBanner), corporateBrandingPage.extractFileName(filePath_clientBanner));
-        Assert.assertEquals(Browser.getText(logoBanner), corporateBrandingPage.extractFileName(filePath_loginBanner));
+        Assert.assertEquals(Browser.getText(clientLogo), corporateBrandingPage_keyEvent.extractFileName(filePath_clientLogo));
+        Assert.assertEquals(Browser.getText(clientBanner), corporateBrandingPage_keyEvent.extractFileName(filePath_clientBanner));
+        Assert.assertEquals(Browser.getText(logoBanner), corporateBrandingPage_keyEvent.extractFileName(filePath_loginBanner));
     }
 }

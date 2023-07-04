@@ -81,7 +81,7 @@ public class PunchTimePage {
 
     public void showPunchTimeRecord(String dateIn) throws InterruptedException {
         Thread.sleep(2000);
-        if (Browser.checkVisibility(dateTextbox) == false) {Browser.click(toggleButton);}
+        if (!Browser.checkVisibility(dateTextbox)) {Browser.click(toggleButton);}
         Browser.waitElement(dateTextbox);
         Browser.clickByJavaScript(dateTextbox);
         Browser.clearAllContent(dateTextbox);
@@ -164,8 +164,8 @@ public class PunchTimePage {
         Integer differenceHour, differenceMinute;
         String timePeriod;
         Calendar calendar = Calendar.getInstance();
-        Integer hour = new Integer(calendar.get(Calendar.HOUR));
-        Integer minute = new Integer(calendar.get(Calendar.MINUTE));
+        Integer hour = Integer.valueOf(calendar.get(Calendar.HOUR));
+        Integer minute = Integer.valueOf(calendar.get(Calendar.MINUTE));
         Browser.waitElement(timeButton);
         Browser.click(timeButton);
         Browser.waitElement(hourPlusButton);

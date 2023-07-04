@@ -20,10 +20,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Browser {
-    private static By usernameTextBox  = By.xpath("//input[@name='username']");
-    private static By passwordTextBox  = By.xpath("//input[@name='password']");
-    private static By loginButton      = By.xpath("//div[@class='oxd-form-actions orangehrm-login-action']/button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']");
-    private static By accountNamefield = By.xpath("//span[@class='oxd-userdropdown-tab']/p[@class='oxd-userdropdown-name']");
+    private static final By usernameTextBox  = By.xpath("//input[@name='username']");
+    private static final By passwordTextBox  = By.xpath("//input[@name='password']");
+    private static final By loginButton      = By.xpath("//div[@class='oxd-form-actions orangehrm-login-action']/button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']");
+    private static final By accountNamefield = By.xpath("//span[@class='oxd-userdropdown-tab']/p[@class='oxd-userdropdown-name']");
 
     private static WebDriver driver;
     private static final int TIME_OUT_IN_SECONDS = 10;
