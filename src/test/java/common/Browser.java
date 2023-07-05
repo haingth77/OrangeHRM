@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.Color;
 
 import java.awt.*;
 import java.awt.Robot;
@@ -131,6 +132,13 @@ public class Browser {
             driver.quit();
         }
     }
+
+    public static String checkColorCodeHex(By locator, String value) {
+        String strg = driver.findElement(locator).getCssValue(value);
+        String result;
+        return result = Color.fromString(strg).asHex();
+    }
+
     public static void dragAndDropBy(By locator, int xOffset, int yOffset) {
         Actions action = new Actions(driver);
         Browser.waitElement(locator);

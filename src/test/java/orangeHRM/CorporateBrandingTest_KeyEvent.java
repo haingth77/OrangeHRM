@@ -54,6 +54,10 @@ public class CorporateBrandingTest_KeyEvent extends TestBase {
         Assert.assertEquals(Browser.getText(notificationTitle), "Success");
         Assert.assertEquals(Browser.getText(notificationContent), "Successfully Saved");
         Browser.waitElement(clientLogo);
+        Assert.assertEquals(Browser.checkColorCodeHex(primaryColorButton,"background-color"),"#834f97");
+        Assert.assertEquals(Browser.checkColorCodeHex(secondaryColorButton,"background-color"),"#9fa7cf");
+        Assert.assertEquals(Browser.checkColorCodeHex(primaryGradientColor1Button,"background-color"),"#7be0f4");
+        Assert.assertEquals(Browser.checkColorCodeHex(primaryGradientColor2Button,"background-color"),"#d691d2");
         Assert.assertEquals(Browser.getText(clientLogo), corporateBrandingPage_keyEvent.extractFileName(filePath_clientLogo));
         Assert.assertEquals(Browser.getText(clientBanner), corporateBrandingPage_keyEvent.extractFileName(filePath_clientBanner));
         Assert.assertEquals(Browser.getText(logoBanner), corporateBrandingPage_keyEvent.extractFileName(filePath_loginBanner));

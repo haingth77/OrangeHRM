@@ -47,12 +47,13 @@ public class CorporateBrandingTest extends TestBase {
         Browser.uploadFile(clientLogoBrowseButton, filePath_clientLogo);
         Browser.uploadFile(clientBannerBrowseButton, filePath_clientBanner);
         Browser.uploadFile(loginBannerBrowseButton,filePath_loginBanner);
-        
+
         Browser.click(submitButton);
         waitElement(notificationFrame);
         Assert.assertEquals(Browser.getText(notificationTitle),"Success");
         Assert.assertEquals(Browser.getText(notificationContent),"Successfully Saved");
         Browser.waitElement(clientLogo);
+        Assert.assertEquals(Browser.checkColorCodeHex(primaryColorButton,"background-color"),"#834f97");
         Assert.assertEquals(Browser.getText(clientLogo), corporateBrandingPage.extractFileName(filePath_clientLogo));
         Assert.assertEquals(Browser.getText(clientBanner), corporateBrandingPage.extractFileName(filePath_clientBanner));
         Assert.assertEquals(Browser.getText(logoBanner), corporateBrandingPage.extractFileName(filePath_loginBanner));
