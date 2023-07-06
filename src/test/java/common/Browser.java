@@ -135,8 +135,9 @@ public class Browser {
 
     public static String checkColorCodeHex(By locator, String value) {
         String strg = driver.findElement(locator).getCssValue(value);
-        String result;
-        return result = Color.fromString(strg).asHex();
+        String result = Color.fromString(strg).asHex();
+        System.out.println("Color code: " + result);
+        return result ;
     }
 
     public static void dragAndDropBy(By locator, int xOffset, int yOffset) {
