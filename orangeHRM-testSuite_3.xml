@@ -1,0 +1,12 @@
+<suite name="OrangeHRM life_3">
+    <test name="CorporateBrandingTest">
+        <classes>
+            <class name="orangeHRM.CorporateBrandingTest"/>
+        </classes>
+    </test>
+    <test name="CorporateBrandingTest_KetEvent">
+        <classes>
+            <class name="orangeHRM.CorporateBrandingTest_KeyEvent"/>
+        </classes>
+    </test>
+</suite>

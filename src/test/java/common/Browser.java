@@ -136,7 +136,6 @@ public class Browser {
     public static String checkColorCodeHex(By locator, String value) {
         String strg = driver.findElement(locator).getCssValue(value);
         String result = Color.fromString(strg).asHex();
-        System.out.println("Color code: " + result);
         return result ;
     }
 

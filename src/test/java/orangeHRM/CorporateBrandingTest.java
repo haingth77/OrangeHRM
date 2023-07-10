@@ -34,10 +34,7 @@ public class CorporateBrandingTest extends TestBase {
         corporateBrandingPage = new CorporateBrandingPage();
         Browser.visit("https://opensource-demo.orangehrmlive.com/web/index.php/admin/addTheme");
         Browser.login("Admin","admin123");
-        Browser.waitElement(resetButton);
-        Thread.sleep(500);
-        Browser.click(resetButton);
-        Thread.sleep(1000);
+        corporateBrandingPage.resetToDefault(resetButton);
         waitElement(primaryColorButton);
         Browser.click(primaryColorButton);
         corporateBrandingPage.selectColorByDragAndDrop(pickerIndicatorPointer,550, 350);

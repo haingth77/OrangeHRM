@@ -4,6 +4,8 @@ import common.Browser;
 import org.openqa.selenium.By;
 
 public class CorporateBrandingPage_KeyEvent {
+    By resetButton = By.xpath("//div[@class='orangehrm-actions-group']/button[@type='button']");
+
     public void inputColorCode (By locator, By inputTarget, String colorcode) throws InterruptedException {
         Browser.waitElement(locator);
         Browser.click(locator);
@@ -22,5 +24,12 @@ public class CorporateBrandingPage_KeyEvent {
             }
         }
         return result = filePath.substring(count[c-1]+1);
+    }
+
+    public void resetToDefault (By locator) throws InterruptedException{
+        Browser.waitElement(locator);
+        Thread.sleep(500);
+        Browser.click(locator);
+        Thread.sleep(1000);
     }
 }

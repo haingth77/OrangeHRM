@@ -2,5 +2,6 @@
     <suite-files>
         <suite-file path="orangeHRM-testSuite_1.xml"/>
         <suite-file path="orangeHRM-testSuite_2.xml"/>
+        <suite-file path="orangeHRM-testSuite_3.xml"/>
     </suite-files>
 </suite>

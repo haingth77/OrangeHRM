@@ -27,6 +27,13 @@ public class CorporateBrandingPage {
         }
         return result = filePath.substring(count[c-1]+1);
     }
+
+    public void resetToDefault (By locator) throws InterruptedException{
+        Browser.waitElement(locator);
+        Thread.sleep(500);
+        Browser.click(locator);
+        Thread.sleep(1000);
+    }
 }
 
 

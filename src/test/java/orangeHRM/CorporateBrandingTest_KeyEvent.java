@@ -38,10 +38,7 @@ public class CorporateBrandingTest_KeyEvent extends TestBase {
         corporateBrandingPage_keyEvent = new CorporateBrandingPage_KeyEvent();
         Browser.visit("https://opensource-demo.orangehrmlive.com/web/index.php/admin/addTheme");
         Browser.login("Admin", "admin123");
-        Browser.waitElement(resetButton);
-        Thread.sleep(500);
-        Browser.click(resetButton);
-        Thread.sleep(1000);
+        corporateBrandingPage_keyEvent.resetToDefault(resetButton);
         corporateBrandingPage_keyEvent.inputColorCode(primaryColorButton, hexColorCodeTextbox, "#834f97");
         corporateBrandingPage_keyEvent.inputColorCode(secondaryColorButton, hexColorCodeTextbox, "#9fa7cf");
         corporateBrandingPage_keyEvent.inputColorCode(primaryGradientColor1Button, hexColorCodeTextbox, "#7be0f4");
