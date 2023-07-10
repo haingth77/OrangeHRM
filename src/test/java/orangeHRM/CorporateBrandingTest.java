@@ -38,16 +38,13 @@ public class CorporateBrandingTest extends TestBase {
         Thread.sleep(500);
         Browser.click(resetButton);
         Thread.sleep(1000);
-
         waitElement(primaryColorButton);
         Browser.click(primaryColorButton);
         corporateBrandingPage.selectColorByDragAndDrop(pickerIndicatorPointer,550, 350);
         corporateBrandingPage.selectColorByDragAndDrop(pickerRangePointer,510, 499);
-
         Browser.uploadFile(clientLogoBrowseButton, filePath_clientLogo);
         Browser.uploadFile(clientBannerBrowseButton, filePath_clientBanner);
         Browser.uploadFile(loginBannerBrowseButton,filePath_loginBanner);
-
         Browser.click(submitButton);
         waitElement(notificationFrame);
         Assert.assertEquals(Browser.getText(notificationTitle),"Success");

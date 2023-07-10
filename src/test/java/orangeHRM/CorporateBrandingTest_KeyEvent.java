@@ -27,7 +27,7 @@ public class CorporateBrandingTest_KeyEvent extends TestBase {
     By clientBanner = By.xpath("//div[@class='oxd-grid-2 orangehrm-full-width-grid']/div[2]/div[1]/div[2]/div[1]/div[1]/p[@class='oxd-text oxd-text--p orangehrm-file-name']");
     By logoBanner = By.xpath("//div[@class='oxd-grid-2 orangehrm-full-width-grid']/div[3]/div[1]/div[2]/div[1]/div[1]/p[@class='oxd-text oxd-text--p orangehrm-file-name']");
     By mainMenuButton = By.xpath("//div[@class='oxd-main-menu-search']/button[@class='oxd-icon-button oxd-main-menu-button']");
-    By topbarHeader = By.xpath("//header[@class='oxd-topbar-header']/div[@class='oxd-topbar']");
+    By topbarHeader = By.xpath("//header[@class='oxd-topbar']/div[@class='oxd-topbar-header']");
     String filePath_clientLogo = "D:\\HaiNguyen_Private\\IntelliJ\\OrangeHRM\\src\\test\\resources\\pikachu.jpg";
     String filePath_clientBanner = "D:\\HaiNguyen_Private\\IntelliJ\\OrangeHRM\\src\\test\\resources\\pikachu_clientBanner.jpg";
     String filePath_loginBanner = "D:\\HaiNguyen_Private\\IntelliJ\\OrangeHRM\\src\\test\\resources\\pikachu_loginBanner.jpg";
@@ -36,7 +36,6 @@ public class CorporateBrandingTest_KeyEvent extends TestBase {
     @Test
     public void CorporateBrandingTest_KeyEvent() throws InterruptedException {
         corporateBrandingPage_keyEvent = new CorporateBrandingPage_KeyEvent();
-
         Browser.visit("https://opensource-demo.orangehrmlive.com/web/index.php/admin/addTheme");
         Browser.login("Admin", "admin123");
         Browser.waitElement(resetButton);
@@ -47,7 +46,6 @@ public class CorporateBrandingTest_KeyEvent extends TestBase {
         corporateBrandingPage_keyEvent.inputColorCode(secondaryColorButton, hexColorCodeTextbox, "#9fa7cf");
         corporateBrandingPage_keyEvent.inputColorCode(primaryGradientColor1Button, hexColorCodeTextbox, "#7be0f4");
         corporateBrandingPage_keyEvent.inputColorCode(primaryGradientColor2Button, hexColorCodeTextbox, "#d691d2");
-
         Browser.uploadFile(clientLogoBrowseButton, filePath_clientLogo);
         Browser.uploadFile(clientBannerBrowseButton, filePath_clientBanner);
         Browser.uploadFile(loginBannerBrowseButton, filePath_loginBanner);
@@ -63,8 +61,7 @@ public class CorporateBrandingTest_KeyEvent extends TestBase {
         Assert.assertEquals(Browser.checkColorCodeHex(primaryGradientColor2Button,"background-color"),"#d691d2");
         Assert.assertEquals(Browser.checkColorCodeHex(submitButton,"background-color"),"#9fa7cf");
         Assert.assertEquals(Browser.checkColorCodeHex(mainMenuButton,"background-color"),"#834f97");
-        Assert.assertEquals(Browser.checkColorCodeHex(topbarHeader,"background-image"),"#9fa7cf");
-
+        Assert.assertEquals(Browser.checkColorCodeHex(topbarHeader,"background-color"),"#7be0f4");
         Assert.assertEquals(Browser.getText(clientLogo), corporateBrandingPage_keyEvent.extractFileName(filePath_clientLogo));
         Assert.assertEquals(Browser.getText(clientBanner), corporateBrandingPage_keyEvent.extractFileName(filePath_clientBanner));
         Assert.assertEquals(Browser.getText(logoBanner), corporateBrandingPage_keyEvent.extractFileName(filePath_loginBanner));

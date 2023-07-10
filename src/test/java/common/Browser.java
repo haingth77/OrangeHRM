@@ -151,17 +151,17 @@ public class Browser {
         Browser.click(locator);
         StringSelection stringSelection = new StringSelection(filePath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         Robot robot = initialRobot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.keyRelease(KeyEvent.VK_V);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        Thread.sleep(500);
+        Thread.sleep(1000);
     }
 
     public static void keyboardPaste(By locator,String string) throws InterruptedException{
