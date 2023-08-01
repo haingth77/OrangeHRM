@@ -39,7 +39,7 @@ public class PuchTimeTest extends TestBase {
         punchTimePage.fillPunchTime("Punch Out", timeOut);
         punchTimePage.fillNote("Punch Out", noteOut);
         waitElement(notificationFrame);
-        Assert.assertTrue(Browser.checkVisibility(notificationFrame));
+        Assert.assertTrue(Browser.isDisplayed(notificationFrame));
         Assert.assertEquals(Browser.getText(notificationTitle),"Success");
         Assert.assertEquals(Browser.getText(notificationContent),"Successfully Saved");
         visit("https://opensource-demo.orangehrmlive.com/web/index.php/attendance/viewMyAttendanceRecord");

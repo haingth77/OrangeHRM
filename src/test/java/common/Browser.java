@@ -41,6 +41,7 @@ public class Browser {
     }
 
     public static void openBrowser() {
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/browserDrivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
@@ -84,13 +85,18 @@ public class Browser {
         return driver.findElement(locator).getText();
     }
 
-    public static Boolean checkVisibility(By locator) {
+    public static Boolean isDisplayed(By locator) {
         return driver.findElement(locator).isDisplayed();
     }
 
     public static String getTextOfWebElements(By locator) {
         List<WebElement> elements = driver.findElements(locator);
         return elements.stream().map(WebElement::getText).collect(Collectors.toList()).toString();
+    }
+
+    public static void hoverAndClickElement(By locator) {
+        Actions hover = new Actions(driver);
+        hover.moveToElement(driver.findElement(locator)).clickAndHold().build().perform();
     }
 
     public static void login(String username, String password) {

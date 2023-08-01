@@ -39,7 +39,7 @@ public class TimesheetTableTest extends TestBase {
         timesheetTablePage.selectProject(briefProjectName,projectName);
         timesheetTablePage.selectActivity(activityName);
         timesheetTablePage.fillTimesheet(monday, tuesday, wednesday, thursday, friday, satuday, sunday);
-        Assert.assertTrue(Browser.checkVisibility(notificationFrame));
+        Assert.assertTrue(Browser.isDisplayed(notificationFrame));
         Assert.assertEquals(Browser.getText(notificationTitle),"Success");
         Assert.assertEquals(Browser.getText(notificationContent),"Successfully Saved");
         TimesheetTable timesheetTable = timesheetTablePage.getTimesheetTable();

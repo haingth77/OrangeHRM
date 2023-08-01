@@ -9,11 +9,11 @@ public class NavigateOrangeHRMPage {
 
     public boolean checkVisibilityOfLoginLogo() {
         Browser.waitElement(loginLogo);
-        return Browser.checkVisibility(loginLogo);
+        return Browser.isDisplayed(loginLogo);
     }
 
     public boolean checkVisibilityOfUsernameTextBox() {
         Browser.waitElement(usernameTextBox);
-        return Browser.checkVisibility(usernameTextBox);
+        return Browser.isDisplayed(usernameTextBox);
     }
 }

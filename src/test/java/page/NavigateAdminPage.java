@@ -15,16 +15,16 @@ public class NavigateAdminPage {
 
     public boolean checkVisibilityOfAdminPageTitle() {
         Browser.waitElement(adminPageTitle);
-        return Browser.checkVisibility(adminPageTitle);
+        return Browser.isDisplayed(adminPageTitle);
     }
 
     public boolean checkVisibilityOfSystemUserFilter() {
         Browser.waitElement(systemUserFilter);
-        return Browser.checkVisibility(systemUserFilter);
+        return Browser.isDisplayed(systemUserFilter);
     }
 
     public boolean checkVisibilityOfSystemUserRecord() {
         Browser.waitElement(systemUserRecord);
-        return Browser.checkVisibility(systemUserRecord);
+        return Browser.isDisplayed(systemUserRecord);
     }
 }

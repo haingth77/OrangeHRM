@@ -81,7 +81,7 @@ public class PunchTimePage {
 
     public void showPunchTimeRecord(String dateIn) throws InterruptedException {
         Thread.sleep(2000);
-        if (!Browser.checkVisibility(dateTextbox)) {Browser.click(toggleButton);}
+        if (!Browser.isDisplayed(dateTextbox)) {Browser.click(toggleButton);}
         Browser.waitElement(dateTextbox);
         Browser.clickByJavaScript(dateTextbox);
         Browser.clearAllContent(dateTextbox);

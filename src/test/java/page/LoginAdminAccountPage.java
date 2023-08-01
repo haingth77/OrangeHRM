@@ -11,14 +11,14 @@ public class LoginAdminAccountPage {
 
     public boolean checkVisibilityOfDashBoardTitle() {
         Browser.waitElement(dashBoardTitle);
-        return Browser.checkVisibility(dashBoardTitle);
+        return Browser.isDisplayed(dashBoardTitle);
     }
 
 
 
     public boolean checkVisibilityOfWidgetCard() {
         Browser.waitElement(widgetCard);
-        return Browser.checkVisibility(widgetCard);
+        return Browser.isDisplayed(widgetCard);
     }
 
 }
