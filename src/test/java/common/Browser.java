@@ -24,7 +24,7 @@ public class Browser {
     private static final By usernameTextBox  = By.xpath("//input[@name='username']");
     private static final By passwordTextBox  = By.xpath("//input[@name='password']");
     private static final By loginButton      = By.xpath("//div[@class='oxd-form-actions orangehrm-login-action']/button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']");
-    private static final By accountNamefield = By.xpath("//span[@class='oxd-userdropdown-tab']/p[@class='oxd-userdropdown-name']");
+    private static final By accountNameField = By.xpath("//span[@class='oxd-userdropdown-tab']/p[@class='oxd-userdropdown-name']");
 
     private static WebDriver driver;
     private static final int TIME_OUT_IN_SECONDS = 10;
@@ -104,13 +104,13 @@ public class Browser {
         Browser.fill(usernameTextBox, username);
         Browser.fill(passwordTextBox, password);
         Browser.click(loginButton);
-        Browser.waitElement(accountNamefield);
+        Browser.waitElement(accountNameField);
     }
 
-    public static String getDataFromCsvFile(String fileLoction) throws IOException, CsvValidationException {
+    public static String getDataFromCsvFile(String fileLocation) throws IOException, CsvValidationException {
         String[] csvCells;
         List<String> provinceNameCsv = new ArrayList<String>();
-        CSVReader readcsv = new CSVReader(new FileReader(fileLoction));
+        CSVReader readcsv = new CSVReader(new FileReader(fileLocation));
         while ((csvCells = readcsv.readNext()) != null) {
             provinceNameCsv.add(csvCells[0]);
         }
