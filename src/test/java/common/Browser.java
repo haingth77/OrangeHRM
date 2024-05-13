@@ -44,6 +44,7 @@ public class Browser {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/browserDrivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+
     }
 
     public static void visit(String url) {
@@ -190,4 +191,5 @@ public class Browser {
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(500);
     }
+
 }
